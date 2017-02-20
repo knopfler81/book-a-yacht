@@ -10,7 +10,7 @@ class User < ApplicationRecord
   # owner
   has_many :yachts
   has_many :owner_bookings, through: :yachts, class_name: 'Booking'
-  # has_many :reviews, through: :bookings
+  has_many :reviews, through: :bookings
 
   # has_attachment  :avatar, accept: [:jpg, :jpeg, :png, :gif]
 
