@@ -44,7 +44,6 @@ class YachtsController < ApplicationController
   private
 
   def yacht_params
-    params.require(:yacht).permit(:name, :description, :location, :price, :length, :width, :capacity, :air_c, :crew, :cabins)
-  # Ajouter le paramètre photos
+    params.require(:yacht).permit(:name, :description, :location, :price, :length, :width, :capacity, :air_c, :crew, :cabins, photos: [])
   end
 end
