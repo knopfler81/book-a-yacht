@@ -14,4 +14,21 @@
       </div>
     </div>
   </div>
+  <div class="row">
+      <div class="col-xs-12">
+        <% current_user.yachts.each do |yacht| %>
+        <%= yacht.name%>
+        <%= yacht.price %>
+        <%= yacht.cabins %>
+        <%= yacht.description %>
+        <%= yacht.location %>
+        <%#= image_tag yacht.photos %>
+        <%= yacht.length %>
+        <%= yacht.width %>
+        <%= yacht.capacity %>
+        <%= yacht.price %>
+        <%= yacht.air_c %>
+        <% end %>
+      </div>
+  </div>
 </div>
