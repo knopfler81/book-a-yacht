@@ -1,9 +1,11 @@
 class Booking < ApplicationRecord
   belongs_to :yacht
   belongs_to :user
-
   has_many :reviews
   validate :start_date_cannot_be_in_the_past, :end_date_cannot_be_before_start_date
+  validates :guests, inclusion: { in: [1..10]}
+
+
 
   private
 
