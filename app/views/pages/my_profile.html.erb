@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3><%= current_user.first_name %></h3>
+      <h3><%= current_user.last_name %></h3>
+        <%= image_tag(current_user.avatar) %>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %>
+        <%= link_to "New Boat",  "#", class: "btn btn-primary" %>
+        <%= link_to "My Boat", "#", class: "btn btn-primary"  %>
+      </div>
+    </div>
+  </div>
+</div>
