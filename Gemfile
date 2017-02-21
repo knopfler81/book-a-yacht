@@ -19,6 +19,11 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
@@ -29,5 +34,7 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+
 
 
