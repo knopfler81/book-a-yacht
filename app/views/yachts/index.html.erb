@@ -1,0 +1,17 @@
+<div class="row">
+  <% @yachts.each do |yacht| %>
+    <div class="col-xs-12">
+      <div class="card">
+        <p><%= yacht.name %> - <%= yacht.length %>m</p>
+        <p><%= yacht.capacity %> people</p>
+        <p><%= yacht.price %>$/day</p>
+        <%= link_to 'More details', yacht_path(yacht, location: params[:location], start_date: params[:start_date], end_date: params[:end_date]) %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+<!-- rajouter en background image 1ere photo du yacht yacht.photos.first -->
+<!-- en fonction de l'input barre recherche (location, date => available true false) -->

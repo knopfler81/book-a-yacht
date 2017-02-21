@@ -1,0 +1,19 @@
+<%= simple_form_for @yacht do |f| %>
+  <%= f.input :name, label: "Yacht name" %>
+  <%= f.input :location, label: "Location" %>
+  <%= f.input :price, label: "Price per day" %>
+  <%= f.input :description, label: "Add a facultative description" %>
+  <%= f.input :length, label: "Length" %>
+  <%= f.input :width, label: "Width" %>
+  <%= f.input :capacity, label: "Capacity" %>
+  <%= f.input :air_c, label: "" %>
+  <%= f.input :crew, label: "Number of crew members" %>
+  <%= f.input :cabins, label: "Number of cabins" %>
+
+
+  <%= f.button :submit %>
+<% end %>
+
+
+<!-- Ajout du critère photo dans le form -->
+<!-- f.input :photos, as: :attachinary -->
