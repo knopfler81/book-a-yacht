@@ -1,0 +1,23 @@
+
+<h1><%= @yacht.name %></h1>
+<h3><%= @yacht.location %></h3>
+<h3><%= @yacht.price %>$/day</h3>
+
+<p>Length: <%= @yacht.length %>m</p>
+<p>Width: <%= @yacht.width %>m</p>
+<p>Can accomodates <%= @yacht.capacity %> people</p>
+<p>Available: <%= @yacht.available %> </p>
+<p><%= 'Air conditionner OK' if @yacht.air_c %> </p>
+<p>Crew: <%= @yacht.crew %> </p>
+<p>Cabins: <%= @yacht.cabins %> </p>
+<p>Description: <%= @yacht.description %> </p>
+<p>Owner: <%= @yacht.user.first_name %> <%= @yacht.user.last_name %></p>
+<!-- @yacht.photos -->
+
+
+<%= link_to 'Back to index', yachts_path, class: 'btn btn-primary' %>
+<!-- back to index avec recherche faite sur la home -->
+
+<!-- SI OWNER, afficher boutons: edit, destroy et masquer bouton et form book -->
+
+<!-- SI CUSTOMER/VISITEUR, afficher form + bouton book et masquer edit et destroy -->
