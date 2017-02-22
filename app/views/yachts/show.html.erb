@@ -1,46 +1,52 @@
 
-<h1><%= @yacht.name %></h1>
-<h3><%= @yacht.location %></h3>
-<h3><%= @yacht.price %>$/day</h3>
-
-<p>Length: <%= @yacht.length %>m</p>
-<p>Width: <%= @yacht.width %>m</p>
-<p>Can accomodates <%= @yacht.capacity %> people</p>
-<p>Available: <%= @yacht.available %> </p>
-<p><%= 'Air conditionner OK' if @yacht.air_c %> </p>
-<p>Crew: <%= @yacht.crew %> </p>
-<p>Cabins: <%= @yacht.cabins %> </p>
-<p>Description: <%= @yacht.description %> </p>
-<p>Owner: <%= @yacht.user.first_name %> <%= @yacht.user.last_name %></p>
-
-<% @yacht.photos.each do |photo| %>
-    <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-<% end %>
-
-
-<%= render 'booking_form' %>
-
-<!-- MAP -->
-<div id="map" style="width: 100%; height: 600px;"></div>
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
-<% end %>
-
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-offset-3">
+	     <h1><%= @yacht.name %></h1>
+	     <h3><%= @yacht.location %></h3>
+	     <h3><%= @yacht.price %>$/day</h3>
+    </div>
+    <pr></pr>	
+    <div class="col-xs-12 col-sm-6 col-md-offset-3">
+	     <p>Length: <%= @yacht.length %>m</p>
+	     <p>Width: <%= @yacht.width %>m</p>
+	     <p>Can accomodates <%= @yacht.capacity %> people</p>
+	     <p>Available: <%= @yacht.available %> </p>
+	     <p><%= 'Air conditionner OK' if @yacht.air_c %> </p>
+	     <p>Crew: <%= @yacht.crew %> </p>
+	     <p>Cabins: <%= @yacht.cabins %> </p>
+	     <p>Description: <%= @yacht.description %> </p>
+	     <p>Owner: <%= @yacht.user.first_name %> <%= @yacht.user.last_name %></p>
+    </div>
+    <pr></pr>
+    <pr></pr>
+    <pr></pr>
+    <div class="col-xs-12 col-sm-8 col-md-offset-2">
+      <%= render 'shared/carousel_show' %>
+    </div>
+  </div>
+  <%= render 'booking_form' %>
+  <div class="col-xs-12 col-sm-10 col-md-offset-1">
+    <div id="map" style="width: 100%; height: 600px;"></div>
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+        $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 0) {
+              handler.getMap().setZoom(2);
+            } else if (markers.length == 1) {
+              handler.getMap().setZoom(14);
+            }
+          });
+        });
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
 
 

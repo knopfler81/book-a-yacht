@@ -3,7 +3,6 @@ class YachtsController < ApplicationController
     # @yachts = Yacht.all
     @yachts = Yacht.near('Monaco', 30)
     # remplacer par le résultat de la recherche, on doit pouvoir filtrer avec les dates aussi
-
     @hash = Gmaps4rails.build_markers(@yachts) do |yacht, marker|
       marker.lat yacht.latitude
       marker.lng yacht.longitude
