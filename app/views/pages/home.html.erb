@@ -6,9 +6,9 @@
     <div class="row">
       <div class="col-xs-12">
 
-      <%= simple_form_for :query,  url: "#", :method => :get,  wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
-         <%= f.input :start_date, collection: Date.today.step(Date.today+1.month).to_a%>
-         <%= f.input :end_date, collection: Date.today.step(Date.today+1.month).to_a%>
+      <%= simple_form_for :query,  url: "/yachts", :method => :get,  wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
+         <%= f.input :start_date, as: :string, input_html: { type: "date"} %>
+         <%= f.input :end_date, as: :string, input_html: { type: "date"} %>
          <%= f.input :guests, collection: 1..10, prompt: "How many guests ?" %>
          <%= f.button :submit, "Find", class:"btn btn-warning" %>
       <% end %>
