@@ -1,12 +1,24 @@
 class YachtsController < ApplicationController
   def index
-    @yachts = Yacht.all
+    # @yachts = Yacht.all
+    @yachts = Yacht.near('Monaco', 30)
+    # remplacer par le résultat de la recherche, on doit pouvoir filtrer avec les dates aussi
+
+    @hash = Gmaps4rails.build_markers(@yachts) do |yacht, marker|
+      marker.lat yacht.latitude
+      marker.lng yacht.longitude
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def show
     @yacht = Yacht.find(params[:id])
     @booking = Booking.new
-    # ajouter les reviews
+    @hash = Gmaps4rails.build_markers(@yacht) do |yacht, marker|
+      marker.lat yacht.latitude
+      marker.lng yacht.longitude
+      # marker.infowindow render_to_string(partial: "/yachts/map_box", locals: { flat: flat })
+    end
   end
 
   def new
