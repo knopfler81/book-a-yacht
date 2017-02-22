@@ -18,21 +18,30 @@
   <% end %>
 <% end %>
 
-<div class="row">
-  <% @yachts.each do |yacht| %>
-    <div class="col-xs-12 col-md-3">
-      <div class="card">
-        <p><%= yacht.name %> - <%= yacht.length %>m</p>
-        <p><%= yacht.capacity %> people</p>
-        <p><%= yacht.price %>$ per day</p>
-        <%= render 'shared/carousel_index', yacht: yacht %>
-        <%= link_to 'More details', yacht_path(yacht, location: params[:location], start_date: params[:start_date], end_date: params[:end_date]) %>
+
+<div class="container">
+  <div class="row">
+    <% @yachts.each do |yacht| %>
+      <div class="col-xs-12 col-md-4">
+        <div class="card">
+          <p class="carrousel-image"><%= render 'shared/carousel_index', yacht: yacht %></p>
+          <p><%= yacht.name %> - <%= yacht.length %>m</p>
+          <p><%= yacht.capacity %> people</p>
+          <p><%= yacht.price %>$ per day</p>
+          <p>Location: <%= yacht.location %></p>
+           <button type="submit" class="btn btn-default"><%= link_to 'More details', yacht_path(yacht, location: params[:location], start_date: params[:start_date], end_date: params[:end_date]) %></button>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
-
+<%#= content_for(:after_js) do %>
+<!-- <script>
+$(document).ready(function(){
+  $('.carousel').carousel('pause');
+  }); </script>
+<%# end %> -->
 
 
 
