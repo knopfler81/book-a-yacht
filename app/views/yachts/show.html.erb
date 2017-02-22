@@ -17,11 +17,11 @@
     <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
 <% end %>
 
-
+<%= render 'booking_form' %>
 
 <%= link_to 'Back to index', yachts_path, class: 'btn btn-primary' %>
 <!-- back to index avec recherche faite sur la home -->
-<%= link_to "Book this yacht", yacht_bookings_path(@yacht) %>
+<%#= link_to "Book this yacht", booking_path(@yacht), class:"btn btn-primary" %>
 <!-- SI OWNER, afficher boutons: edit, destroy et masquer bouton et form book -->
 
 <!-- SI CUSTOMER/VISITEUR, afficher form + bouton book et masquer edit et destroy -->

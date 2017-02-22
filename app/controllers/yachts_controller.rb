@@ -5,6 +5,7 @@ class YachtsController < ApplicationController
 
   def show
     @yacht = Yacht.find(params[:id])
+    @booking = Booking.new
     # ajouter les reviews
   end
 
