@@ -12,14 +12,12 @@ class YachtsController < ApplicationController
 
   def show
     @yacht = Yacht.find(params[:id])
-
+    @booking = Booking.new
     @hash = Gmaps4rails.build_markers(@yacht) do |yacht, marker|
       marker.lat yacht.latitude
       marker.lng yacht.longitude
       # marker.infowindow render_to_string(partial: "/yachts/map_box", locals: { flat: flat })
     end
-
-    # ajouter les reviews
   end
 
   def new

@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-offset-3">
@@ -24,6 +25,7 @@
       <%= render 'shared/carousel_show' %>
     </div>
   </div>
+  <%= render 'booking_form' %>
   <div class="col-xs-12 col-sm-10 col-md-offset-1">
     <div id="map" style="width: 100%; height: 600px;"></div>
     <% content_for(:after_js) do %>
@@ -46,9 +48,11 @@
   </div>
 </div>
 
+
+
 <%= link_to 'Back to index', yachts_path, class: 'btn btn-primary' %>
 <!-- back to index avec recherche faite sur la home -->
-
+<%#= link_to "Book this yacht", booking_path(@yacht), class:"btn btn-primary" %>
 <!-- SI OWNER, afficher boutons: edit, destroy et masquer bouton et form book -->
 
 <!-- SI CUSTOMER/VISITEUR, afficher form + bouton book et masquer edit et destroy -->

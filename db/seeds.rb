@@ -34,4 +34,8 @@ end
     user_id: (1..5).to_a.sample
     )
     yacht.save!
-end
+  end
+
+
+
+

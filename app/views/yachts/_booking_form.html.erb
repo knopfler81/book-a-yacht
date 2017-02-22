@@ -1,0 +1,6 @@
+<%= simple_form_for [@yacht, @booking] do |f| %>
+  <%= f.input :start_date,  input_html: { type: "date"} %>
+  <%= f.input :end_date,  input_html: { type: "date"} %>
+  <%= f.input :guests, collection: 1..10, prompt: "How many guests ?" %>
+  <%= f.submit  %>
+<% end %>
