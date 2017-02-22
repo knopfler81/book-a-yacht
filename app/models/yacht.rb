@@ -6,4 +6,7 @@ class Yacht < ApplicationRecord
   has_attachments :photos, maximum: 10
 
   validates :name, :price, :length, :capacity, :cabins, presence: true
+
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
 end
