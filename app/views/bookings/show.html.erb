@@ -4,13 +4,13 @@
 
      <% @yacht.photos.each do |photo| %>
           <%= cl_image_tag photo.path, width: 300, height: 200 %>
-          <% end %>
+      <% end %>
     <div class="col-xs-12 col-sm-6">
       <h3>Your boat details: </h3>
       <hr>
       <h4> Price :  <strong>$<%= @yacht.price %> </strong></h4>
       <h4> Location :<%= @yacht.location %></h4>
-      <h4> AC :<%= @yacht.air_c %></h4>
+      <h4> AC :<%= 'Air conditionner OK' if @yacht.air_c %></h4>
       <h4> Cabins: <%= @yacht.cabins %></h4>
       <h4> The crew members are <%= @yacht.crew %></h4>
       <h4> Boat width:<%= @yacht.width %></h4>
@@ -21,7 +21,7 @@
     <div class="col-xs-12 col-sm-6">
       <h3> Your booking details</h3>
       <hr>
-      <h4>Start Date : <strong><%= @booking.start_date %></strong>  - End Date :  <strong><%= @booking.start_date %></strong>  </h4>
+      <h4>Start Date : <strong><%= @booking.start_date %></strong>  - End Date :  <strong><%= @booking.start_date %></strong></h4>
 
       <h4> You've booked for <strong><%= @booking.guests %> guests</strong></h4>
       <%= link_to "Pay","#", class: "btn btn-primary"  %>
