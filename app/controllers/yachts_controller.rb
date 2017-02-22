@@ -1,7 +1,7 @@
 class YachtsController < ApplicationController
   def index
     # @yachts = Yacht.all
-    @yachts = Yacht.near('Monaco', 30)
+    @yachts = Yacht.near(params[:query][:location], 30).where('capacity >= ?', params[:query][:guests])
     # remplacer par le résultat de la recherche, on doit pouvoir filtrer avec les dates aussi
     @hash = Gmaps4rails.build_markers(@yachts) do |yacht, marker|
       marker.lat yacht.latitude
