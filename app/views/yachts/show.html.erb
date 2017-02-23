@@ -1,13 +1,15 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-offset-3">
-	     <h1><%= @yacht.name %></h1>
-	     <h3><%= @yacht.location %></h3>
-	     <h3><%= @yacht.price %>$/day</h3>
+    <div class="col-xs-12 col-sm-12  text-center">
+	    <h1><%= @yacht.name %></h1>
+	    <h3><%= @yacht.location %> -  $<%= @yacht.price %>/day</h3>
     </div>
-    <pr></pr>
-    <div class="col-xs-12 col-sm-6 col-md-offset-3">
+  </div>
+<br><br>
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-6 ">
 	     <p>Length: <%= @yacht.length %>m</p>
 	     <p>Width: <%= @yacht.width %>m</p>
 	     <p>Can accomodates <%= @yacht.capacity %> people</p>
@@ -16,23 +18,31 @@
 	     <p>Crew: <%= @yacht.crew %> </p>
 	     <p>Cabins: <%= @yacht.cabins %> </p>
 	     <p>Description: <%= @yacht.description %> </p>
-	     <p>Owner: <%= @yacht.user.first_name %> <%= @yacht.user.last_name %></p>
+    <% if  current_user.id == @yacht.user_id %>
+      <%= link_to "Edit yacht", edit_yacht_path(@yacht), class:"btn btn-warning"  %>
+    <% end %>
     </div>
-
-      <div class="col-xs-12 col-sm-8 col-md-offset-2">
-        <%= render 'shared/carousel_show' %>
-      </div>
-
-      <div class="col-xs-12">
-        <% if current_user.id != @yacht.user_id %>
-          <%= render 'bookings/form' %>
-        <% end %>
-      </div>
-
-
+    <div class="col-xs-12 col-sm-6">
+      <%= render 'shared/carousel_show' %>
+    </div>
   </div>
 
-
+  <% if current_user.id != @yacht.user_id %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h3>About the owner</h3>
+        <% if  @yacht.user.avatar?%>
+          <%= image_tag @yacht.user.avatar  %>
+        <% end %>
+        <h4>  <%= @yacht.user.first_name %></h4>
+        <h4> <%= @yacht.user.last_name %></h4>
+        <%= link_to "Contact owner", "#", class: "btn btn-success" %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+          <%= render 'bookings/form' %>
+      </div>
+    </div>
+  <% end %>
 
   <div class="col-xs-12 col-sm-10 col-md-offset-1">
     <div id="map" style="width: 100%; height: 600px;"></div>
