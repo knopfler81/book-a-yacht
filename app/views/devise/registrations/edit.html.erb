@@ -17,6 +17,9 @@
       <%= f.input :password_confirmation, required: false %>
       <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
     <% end %>
+
+    <%= f.input :avatar, as: :attachinary %>
+
   </div>
 
   <div class="form-actions">
