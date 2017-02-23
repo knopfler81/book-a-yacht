@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
 
   def show
     @yacht = @booking.yacht
+    @review = Review.new
   end
 
   def create
