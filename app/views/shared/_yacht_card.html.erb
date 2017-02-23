@@ -1,6 +1,10 @@
 <div class="card">
   <p class="carrousel-image"><%= render 'shared/carousel_index', yacht: yacht %></p>
-  <p><%= yacht.name %> - <%= yacht.length %>m</p>
+  <p><%= yacht.name %>
+	  <% (yacht.average_rating.to_i).times do %>
+	    <i class="fa fa-star" aria-hidden="true"></i>
+	  <% end %>
+  <p><%= yacht.length %>m</p>
   <p><%= yacht.capacity %> people</p>
   <p><%= yacht.price %>$ per day</p>
   <p>Location: <%= yacht.location %></p>

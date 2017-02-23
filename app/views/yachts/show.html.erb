@@ -3,6 +3,9 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12  text-center">
 	    <h1><%= @yacht.name %></h1>
+      <% (@yacht.average_rating.to_i).times do %>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      <% end %>
 	    <h3><%= @yacht.location %> -  $<%= @yacht.price %>/day</h3>
     </div>
   </div>
