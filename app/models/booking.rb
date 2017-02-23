@@ -7,6 +7,11 @@ class Booking < ApplicationRecord
 
 
 
+  def payment
+    self.payment_status = true
+    self.save
+  end
+
   private
 
   def start_date_cannot_be_in_the_past
