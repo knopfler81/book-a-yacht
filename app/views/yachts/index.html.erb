@@ -1,4 +1,14 @@
-<div id="map" style="width: 70%; height: 400px;"></div>
+<div class="container">
+  <div class="row text-center filter_form">
+        <%= render 'filter_form' %>
+  </div>
+</div>
+
+
+
+<div class="container text-center">
+  <div id="map" style="width: 70%; height: 400px;"></div>
+</div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
@@ -29,6 +39,13 @@
   </div>
 </div>
 
+<% content_for(:after_js) do %>
+ <%= javascript_tag do %>
+    $(document).ready(function(){
+      $('.datepicker').datepicker();
+    });
+ <% end %>
+<% end %>
 
 
 <!-- rajouter en background image 1ere photo du yacht yacht.photos.first -->
