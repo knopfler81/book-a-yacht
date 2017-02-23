@@ -14,27 +14,17 @@
       </div>
     </div>
   </div>
-  <div class="row">
-        <%# Yacht.where('user_id = ?', current_user[:id]).each do |yacht| %>
-    <% current_user.yachts.each do |yacht| %>
-        <div class="col-xs-12 col-sm-4">
-          <div class="card">
-            <ul class="list-unstyled">
-              <li>Name: <%= yacht.name%> </li>
-              <li>Price: $<%= yacht.price %> </li>
-              <li>Cabins: <%= yacht.cabins %> </li>
-              <li>Description: <%= yacht.description %> </li>
-              <li>Location: <%= yacht.location %> </li>
-            <%#= image_tag yacht.photos %> </li>
-              <li>Length: <%= yacht.length %> </li>
-              <li>Width: <%= yacht.width %> </li>
-              <li>Capacity: <%= yacht.capacity %> </li>
-              <li>Price: <%= yacht.price %> </li>
-              <li>Air-C: <%= yacht.air_c %> </li>
-            </ul>
-          </div>
-        </div>
-    <% end %>
 
+  <div class="container">
+    <div class="row">
+      <% current_user.yachts.each do |yacht| %>
+        <div class="col-xs-12 col-md-4">
+          <%= render 'shared/yacht_card', yacht: yacht %>
+        </div>
+      <% end %>
+    </div>
   </div>
+
+
+  
 </div>
