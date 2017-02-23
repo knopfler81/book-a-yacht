@@ -17,6 +17,11 @@ class BookingsController < ApplicationController
     redirect_to booking_path(@booking)
   end
 
+
+  def update
+
+  end
+
   private
 
   def booking_params
