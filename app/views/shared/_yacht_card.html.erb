@@ -1,0 +1,8 @@
+<div class="card">
+  <p class="carrousel-image"><%= render 'shared/carousel_index', yacht: yacht %></p>
+  <p><%= yacht.name %> - <%= yacht.length %>m</p>
+  <p><%= yacht.capacity %> people</p>
+  <p><%= yacht.price %>$ per day</p>
+  <p>Location: <%= yacht.location %></p>
+   <button type="submit" class="btn btn-default"><%= link_to 'More details', yacht_path(yacht, location: params[:location], start_date: params[:start_date], end_date: params[:end_date]) %></button>
+</div>
