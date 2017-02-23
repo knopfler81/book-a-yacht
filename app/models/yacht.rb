@@ -10,4 +10,14 @@ class Yacht < ApplicationRecord
 
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
+
+  def average_rating
+  	sum = 0
+  	reviews.each do |review|
+  		sum += review.rating
+  	end
+  	if reviews.count > 0
+  		sum /  reviews.count
+  	end
+  end
 end
