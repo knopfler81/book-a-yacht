@@ -12,7 +12,9 @@ class User < ApplicationRecord
   has_many :owner_bookings, through: :yachts, class_name: 'Booking'
   has_many :reviews, through: :bookings
 
-  # has_attachment  :avatar, accept: [:jpg, :jpeg, :png, :gif]
+  # if current_user.signed_without_oauth?
+  has_attachment  :avatar, accept: [:jpg, :jpeg, :png, :gif]
+  # end
 
   validates :last_name, :first_name, presence: true
 
