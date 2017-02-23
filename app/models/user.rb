@@ -37,4 +37,13 @@ class User < ApplicationRecord
     return user
   end
 
+  def update_with_password(params={})
+    params.delete(:current_password)
+    self.update_without_password(params)
+  end
+
+  def signed_without_oauth?
+    provider != "facebook"
+  end
+
 end
