@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <% if current_user.yachts == [] %>
+      <% if current_user.yachts.empty? %>
         <%= link_to t(".top_call_to_action", default: "Rent a yacht"), new_yacht_path, class: "navbar-wagon-item navbar-wagon-button btn" %>
       <% else %>
         <%= link_to t(".top_call_to_action", default: "My yachts"), my_profile_path(anchor: 'my_yachts'), class: "navbar-wagon-item navbar-wagon-button btn" %>
