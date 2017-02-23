@@ -12,8 +12,8 @@ class User < ApplicationRecord
   has_many :owner_bookings, through: :yachts, class_name: 'Booking'
   has_many :reviews, through: :bookings
 
-  # if current_user.signed_without_oauth?
-  has_attachment  :avatar, accept: [:jpg, :jpeg, :png, :gif]
+  # if user.signed_without_oauth?
+    has_attachment  :avatar, accept: [:jpg, :jpeg, :png, :gif]
   # end
 
   validates :last_name, :first_name, presence: true
@@ -21,7 +21,7 @@ class User < ApplicationRecord
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
-    user_params[:avatar] = auth.info.image
+    user_params[:avatar_url] = auth.info.image
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
     user_params = user_params.to_h
