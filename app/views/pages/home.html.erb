@@ -8,8 +8,8 @@
 
       <%= simple_form_for :query,  url: yachts_path, :method => :get,  wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
           <%= f.input :location, placeholder: "Location" %>
-          <%= f.input :start_date, as: :string, input_html: { type: "date"} %>
-          <%= f.input :end_date, as: :string, input_html: { type: "date"} %>
+          <%= f.input :start_date, placeholder: "Start date", input_html: {class: 'datepicker'} %>
+          <%= f.input :end_date, placeholder: "End date", input_html: {class: 'datepicker'} %>
           <%= f.input :guests, collection: 1..10, prompt: "Guests" %>
           <%= f.button :submit, "Find", class:"btn btn-warning" %>
       <% end %>
@@ -19,3 +19,10 @@
   </div>
 </div>
 
+<% content_for(:after_js) do %>
+ <%= javascript_tag do %>
+    $(document).ready(function(){
+      $('.datepicker').datepicker();
+    });
+ <% end %>
+<% end %>
