@@ -6,19 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "Creating Users"
 10.times do
+  print "."
   user = User.new(
     email: Faker::Internet.email,
     password: "password",
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    avatar_url: Faker::Avatar.image
+    avatar_url: 'http://placehold.it/50'
   )
   user.save!
 end
 
-
+puts "Creating Yachts"
 20.times do
+  print "."
   yacht = Yacht.new(
     name: Faker::Pokemon.name,
     description: Faker::Lorem.sentence,
@@ -33,15 +36,17 @@ end
     air_c: [true, false].sample,
     crew: (1..6).to_a.sample,
     user_id: (1..10).to_a.sample
-    )
-    yacht.save!
-  end
+  )
+  yacht.save!
+end
 
+puts "Creating Bookings"
 20.times do
-    start_date = ((Date.new(2017,03,01))..(Date.new(2017,03,31))).to_a.sample
-    end_date = start_date + (2..10).to_a.sample
-    yacht_id = (1..10).to_a.sample
-    booking = Booking.new(
+  print "."
+  start_date = ((Date.new(2017,03,01))..(Date.new(2017,03,31))).to_a.sample
+  end_date = start_date + (2..10).to_a.sample
+  yacht_id = (1..10).to_a.sample
+  booking = Booking.new(
     start_date: start_date,
     end_date: end_date,
     yacht_id: yacht_id,

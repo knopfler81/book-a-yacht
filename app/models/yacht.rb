@@ -16,7 +16,7 @@ class Yacht < ApplicationRecord
 
   def available_at(date_range)
     available = true
-    self.bookings.each do |booking|
+    self.owner_bookings.each do |booking|
       available = false if ((booking.start_date..booking.end_date).to_a & date_range.to_a).present?
     end
     available
