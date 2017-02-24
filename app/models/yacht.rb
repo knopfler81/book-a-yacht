@@ -1,7 +1,7 @@
 class Yacht < ApplicationRecord
   belongs_to :user
-  has_many :bookings
-  has_many :reviews, through: :bookings
+  has_many :owner_bookings, class_name: 'Booking'
+  has_many :reviews, through: :owner_bookings
 
   has_attachments :photos, maximum: 10
 
@@ -19,7 +19,7 @@ class Yacht < ApplicationRecord
     end
     available
   end
-  
+
   def average_rating
   	sum = 0
   	reviews.each do |review|

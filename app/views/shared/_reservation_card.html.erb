@@ -1,0 +1,12 @@
+<div class="card">
+  <%= cl_image_tag booking.user.avatar.path, :transformation=>[
+    {:width=>400, :height=>400, :radius=>"max", :crop=>"crop"},
+    {:width=>50, :crop=>"scale"}
+  ] %>
+  <h3><%= booking.user.first_name %> <%= booking.user.last_name %></h3>
+  <p>Booked <%= booking.yacht.name %></p>
+  <p>From <%= booking.start_date %></p>
+  <p>To <%= booking.start_date %></p>
+  <p><%= booking.yacht.price %>$ per day</p>
+   <button type="submit" class="btn btn-default"><%= link_to 'More details', booking_path(booking) %></button>
+</div>
