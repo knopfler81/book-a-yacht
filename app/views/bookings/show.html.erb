@@ -26,21 +26,10 @@
       <h4> You've booked for <strong><%= @booking.guests %> guests</strong></h4>
 
       <%= render'modal' %>
-      <div class="book-yatch">
-        <% if @booking.payment_status == true %>
-          <h4 class="booked">You have successfully booked</h4>
-        <% else %>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id= "pay">
-         Validate
-        </button>
-        <% end %>
+
+      <div id="book-yatch">
+          <%= render 'bookings/book_process', booking: @booking, review: @review %>
       </div>
-
-    </div>
-
-    <div class="col-xs-12 col-sm-6">
-      <h3> Think to add a review !</h3>
-      <%= render 'bookings/new_review' %>
     </div>
   </div>
 </div>

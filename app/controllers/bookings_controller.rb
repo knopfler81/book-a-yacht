@@ -21,7 +21,10 @@ class BookingsController < ApplicationController
 
   def update
     if @booking.update(booking_params)
-      redirect_to @booking, notice: "Payement successed"
+      respond_to do |format|
+             format.html { redirect_to booking_path(@booking), notice: "Payement successed" }
+             format.js   # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
       redirect_to @booking, error: "Payement failed"
     end
@@ -29,7 +32,7 @@ class BookingsController < ApplicationController
 
   def pay
     @booking.payment
-    redirect_to @booking
+    @review = Review.new
   end
 
   private
