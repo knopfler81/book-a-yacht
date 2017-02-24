@@ -3,7 +3,7 @@
   <%= f.input :price_min, placeholder: "Price min", html: {class: 'filter-element'}, input_html:{value: params[:query][:price_min]} %>
   <%= f.input :price_max, placeholder: "Price max", html: {class: 'filter-element'}, input_html:{value: params[:query][:price_max]} %>
   <%= f.input :air_c, as: :boolean, label: "Air Conditioner", html: {class: 'filter-element', checked: params[:query][:air_c] } %>
-  <%= f.input :location, placeholder: "Location", input_html:{value: params[:query][:location]} %>
+  <%= f.input :location, placeholder: "Location", input_html:{value: params[:query][:location], class: 'autocomplete'} %>
   <%= f.input(
     :crew,
     collection: crew_collection,
