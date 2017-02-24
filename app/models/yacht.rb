@@ -1,6 +1,8 @@
 class Yacht < ApplicationRecord
   belongs_to :user
+
   has_many :owner_bookings, class_name: 'Booking'
+
   has_many :reviews, through: :owner_bookings
 
   has_attachments :photos, maximum: 10

@@ -63,12 +63,12 @@ class YachtsController < ApplicationController
 
   def filter_yatchs
     @yachts = @yachts.near(params[:query][:location], 20) if params[:query][:location].present?
-    @yachts = @yachts.where('price >= ?', params[:query][:price_min]) if params[:query][:price_min].present?
-    @yachts = @yachts.where('price <= ?', params[:query][:price_max]) if params[:query][:price_max].present?
-    @yachts = @yachts.where('air_c = ?', params[:query][:air_c]) if params[:query][:air_c].present?
-    @yachts = @yachts.where('capacity >= ?', params[:query][:guests]) if params[:query][:guests].present?
-    @yachts = @yachts.where('cabins >= ?', params[:query][:cabins]) if params[:query][:cabins].present?
-    @date_range = (params[:query][:start_date]..params[:query][:end_date]) if params[:query][:start_date].present? && params[:query][:end_date].present?
+    @yachts = @yachts.where('price >= ?', params[:query][:price_min].to_i) if params[:query][:price_min].present?
+    @yachts = @yachts.where('price <= ?', params[:query][:price_max].to_i) if params[:query][:price_max].present?
+    @yachts = @yachts.where('air_c = ?', params[:query][:air_c]) if params[:query][:air_c] == '1'
+    @yachts = @yachts.where('capacity >= ?', params[:query][:guests].to_i) if params[:query][:guests].present?
+    @yachts = @yachts.where('cabins >= ?', params[:query][:cabins].to_i) if params[:query][:cabins].present?
+    @date_range = (DateTime.strptime(params[:query][:start_date], '%m/%d/%Y')..DateTime.strptime(params[:query][:end_date], '%m/%d/%Y')) if params[:query][:start_date].present? && params[:query][:end_date].present?
     @yachts = @yachts.select {|yacht| yacht.available_at(@date_range)} if params[:query][:start_date].present? && params[:query][:end_date].present?
   end
 end
