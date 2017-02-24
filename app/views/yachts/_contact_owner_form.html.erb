@@ -1,11 +1,3 @@
-<div class="container">
-  <div class="row">
-  <div class="col-xs-12 col-sm-10 col-sm-offse-1">
-
-  </div>
-  </div>
-</div>
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -13,12 +5,17 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Send an email</h4>
       </div>
-        <%= simple_form_for (@yacht) do |f| %>
-          <%= f.input :description %>
+
+
+
+      <div class="text-center">
+        <%= form_tag yacht_contacts_path(@yacht), method: :post do %>
+          <%= text_area_tag "message" %>
+
+          <%= submit_tag "send", class: "btn btn-primary" %>
         <% end %>
-      <div class="modal-footer">
-       <%= link_to "Send", "#", method: :patch, remote: true, class: "btn btn-primary","data-dismiss" =>"modal", id:"send" %>
       </div>
+
     </div>
   </div>
 </div>

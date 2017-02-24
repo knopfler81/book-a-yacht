@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :yachts do
     resources :bookings, only:  [:new, :create]
+    resources :contacts, only:  [:create]
   end
 
   resources :bookings, only: [:show, :edit, :update ] do
