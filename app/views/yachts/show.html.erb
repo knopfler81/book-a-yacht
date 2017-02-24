@@ -49,9 +49,11 @@
   <% end %>
 
   <div>
-    <% @yacht.owner_bookings.reviews.each do |review|%>
-    <%= review.description %>
-    <% end %> 
+    <% if @yacht.reviews.present? %>
+      <% @yacht.reviews.each do |review|%>
+        <%= cl_image_tag review.booking.user.avatar.path, class: "    img-circle" %> <%= review.description %> | <%= time_ago_in_words(review.created_at) %>
+      <% end %> 
+    <% end %>
   </div>
 
   <div class="col-xs-12 col-sm-10 col-md-offset-1">
