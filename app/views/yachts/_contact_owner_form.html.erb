@@ -1,0 +1,23 @@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Send an email</h4>
+      </div>
+
+
+
+      <div class="text-center">
+        <%= form_tag yacht_contacts_path(@yacht), method: :post do %>
+          <%= text_area_tag "message" %>
+
+          <%= submit_tag "send", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

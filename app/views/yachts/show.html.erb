@@ -34,13 +34,16 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <h3>About the owner</h3>
-        <%= cl_image_tag @yacht.user.avatar.path, :transformation=>[
+        <%#= cl_image_tag @yacht.user.avatar.path, :transformation=>[
           {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
           {:width=>50, :crop=>"scale"}
         ] %>
         <h4>  <%= @yacht.user.first_name %></h4>
         <h4> <%= @yacht.user.last_name %></h4>
-        <%= link_to "Contact owner", "#", class: "btn btn-success" %>
+        <%= render 'contact_owner_form' %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id= "pay">
+         Contact Owner
+        </button>
       </div>
       <div class="col-xs-12 col-sm-6">
           <%= render 'bookings/form' %>
