@@ -7,7 +7,7 @@
       <div class="col-xs-12">
 
       <%= simple_form_for :query,  url: yachts_path, :method => :get,  wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
-          <%= f.input :location, placeholder: "Location" %>
+          <%= f.input :location, placeholder: "Location", input_html: {class: 'autocomplete'} %>
           <%= f.input :start_date, placeholder: "Start date", input_html: {class: 'datepicker'} %>
           <%= f.input :end_date, placeholder: "End date", input_html: {class: 'datepicker'} %>
           <%= f.input :guests, collection: 1..10, prompt: "Guests" %>
