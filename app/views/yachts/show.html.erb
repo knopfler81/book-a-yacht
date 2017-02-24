@@ -34,10 +34,12 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <h3>About the owner</h3>
+
         <%#= cl_image_tag @yacht.user.avatar.path, :transformation=>[
           {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
           {:width=>50, :crop=>"scale"}
         ] %>
+
         <h4>  <%= @yacht.user.first_name %></h4>
         <h4> <%= @yacht.user.last_name %></h4>
         <%= render 'contact_owner_form' %>
@@ -91,8 +93,18 @@
 </div>
 
 
+<div class="text-center"><%= link_to 'Back to index', yachts_path, class: 'btn btn-primary' %> </div>
 
-<%= link_to 'Back to index', yachts_path, class: 'btn btn-primary' %>
+<% content_for(:after_js) do %>
+ <%= javascript_tag do %>
+    $(document).ready(function(){
+      $('.datepicker').datepicker();
+    });
+ <% end %>
+<% end %>
+
+
+
 <!-- back to index avec recherche faite sur la home -->
 <%#= link_to "Book this yacht", booking_path(@yacht), class:"btn btn-primary" %>
 <!-- SI OWNER, afficher boutons: edit, destroy et masquer bouton et form book -->

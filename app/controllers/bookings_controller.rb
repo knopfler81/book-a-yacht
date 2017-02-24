@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.start_date = DateTime.strptime(params[:booking][:start_date], '%m/%d/%Y')
+    @booking.end_date = DateTime.strptime(params[:booking][:end_date], '%m/%d/%Y')
+    @booking.guests = params[:booking][:guests]
+    @booking.total_price = (@booking.start_date..@booking.end_date).to_a.length * @yacht.price
     @booking.yacht = @yacht
     @booking.save!
     redirect_to booking_path(@booking)

@@ -8,5 +8,5 @@
   <p><%= yacht.capacity %> people</p>
   <p><%= yacht.price %>$ per day</p>
   <p>Location: <%= yacht.location %></p>
-   <button type="submit" class="btn btn-default"><%= link_to 'More details', yacht_path(yacht, location: params[:location], start_date: params[:start_date], end_date: params[:end_date]) %></button>
+   <button type="submit" class="btn btn-default"><%= link_to 'More details', yacht_path(yacht, query: { location: params[:query][:location], start_date: params[:query][:start_date], end_date: params[:query][:end_date], guests: params[:query][:guests] }) %></button>
 </div>
