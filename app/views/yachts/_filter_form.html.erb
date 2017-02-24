@@ -1,0 +1,34 @@
+
+<%= simple_form_for :query,  url: yachts_path, :method => :get,  wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
+  <%= f.input :price_min, placeholder: "Price min", html: {class: 'filter-element'}, input_html:{value: params[:query][:price_min]} %>
+  <%= f.input :price_max, placeholder: "Price max", html: {class: 'filter-element'}, input_html:{value: params[:query][:price_max]} %>
+  <%= f.input :air_c, as: :boolean, label: "Air Conditioner", html: {class: 'filter-element', checked: params[:query][:air_c] } %>
+  <%= f.input :location, placeholder: "Location", input_html:{value: params[:query][:location]} %>
+  <%= f.input(
+    :crew,
+    collection: crew_collection,
+    prompt: "Crew members",
+    selected: params[:query][:crew],
+    html: {class: 'filter-element'}
+  )
+  %>
+  <%= f.input(
+    :cabins,
+    collection: cabin_collection,
+    prompt: "Cabins",
+    selected: params[:query][:cabins],
+    html: {class: 'filter-element'}
+  )
+  %>
+  <%= f.input(
+    :guests,
+    collection: guest_collection,
+    prompt: "Guests",
+    selected: params[:query][:guests]
+  )
+  %>
+  <%= f.input :start_date, placeholder: "Start date", input_html: {class: 'datepicker', value: params[:query][:start_date]} %>
+  <%= f.input :end_date, placeholder: "End date", input_html: {class: 'datepicker', value: params[:query][:end_date]} %>
+  <%= f.button :submit, "Filter", class:"btn btn-warning" %>
+<% end %>
+

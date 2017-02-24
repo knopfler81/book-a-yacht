@@ -1,7 +1,9 @@
 class YachtsController < ApplicationController
   def index
-    # @yachts = Yacht.all
-    @yachts = Yacht.near(params[:query][:location], 30).where('capacity >= ?', params[:query][:guests])
+    @yachts = Yacht.all
+    # @yachts = Yacht.near(params[:query][:location], 30).where('capacity >= ?', params[:query][:guests])
+    filter_yatchs
+
     # remplacer par le résultat de la recherche, on doit pouvoir filtrer avec les dates aussi
     @hash = Gmaps4rails.build_markers(@yachts) do |yacht, marker|
       marker.lat yacht.latitude
@@ -57,5 +59,16 @@ class YachtsController < ApplicationController
 
   def yacht_params
     params.require(:yacht).permit(:name, :description, :location, :price, :length, :width, :capacity, :air_c, :crew, :cabins, photos: [])
+  end
+
+  def filter_yatchs
+    @yachts = @yachts.near(params[:query][:location], 20) if params[:query][:location].present?
+    @yachts = @yachts.where('price >= ?', params[:query][:price_min]) if params[:query][:price_min].present?
+    @yachts = @yachts.where('price <= ?', params[:query][:price_max]) if params[:query][:price_max].present?
+    @yachts = @yachts.where('air_c = ?', params[:query][:air_c]) if params[:query][:air_c].present?
+    @yachts = @yachts.where('capacity >= ?', params[:query][:guests]) if params[:query][:guests].present?
+    @yachts = @yachts.where('cabins >= ?', params[:query][:cabins]) if params[:query][:cabins].present?
+    @date_range = (params[:query][:start_date]..params[:query][:end_date]) if params[:query][:start_date].present? && params[:query][:end_date].present?
+    @yachts = @yachts.select {|yacht| yacht.available_at(@date_range)} if params[:query][:start_date].present? && params[:query][:end_date].present?
   end
 end
