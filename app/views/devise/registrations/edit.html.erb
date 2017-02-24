@@ -13,10 +13,14 @@
     <% end %>
 
     <% if current_user.signed_without_oauth? %>
-      <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-      <%= f.input :password_confirmation, required: false %>
-      <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+      <%= f.input :current_password, required: false %>
+      <%= f.input :password, autocomplete: "off", label: "New password", hint: "leave it blank if you don't want to change it", required: false %>
+      <%= f.input :password_confirmation, label: "New password confirmation", required: false %>
+
     <% end %>
+
+    <%= f.input :avatar, as: :attachinary %>
+
   </div>
 
   <div class="form-actions">

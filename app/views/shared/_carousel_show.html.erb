@@ -12,6 +12,7 @@
       <% @yacht.photos.each_with_index do |photo, index| %>
         <div class="item <%= 'active' if index == 0 %>">
           <%= cl_image_tag photo.path, width: 1800, height: 1200, crop: :fill%>
+          <%= "test" %>
             <div class="carousel-caption">
             </div>
           </div>
