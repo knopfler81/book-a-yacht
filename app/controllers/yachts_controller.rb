@@ -56,6 +56,7 @@ class YachtsController < ApplicationController
     redirect_to my_profile_path
   end
 
+
   private
 
   def yacht_params

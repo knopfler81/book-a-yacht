@@ -34,15 +34,41 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <h3>About the owner</h3>
+
+        <%#= cl_image_tag @yacht.user.avatar.path, :transformation=>[
+          {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
+          {:width=>50, :crop=>"scale"}
+        ] %>
+
         <h4>  <%= @yacht.user.first_name %></h4>
         <h4> <%= @yacht.user.last_name %></h4>
-        <%= link_to "Contact owner", "#", class: "btn btn-success" %>
+        <%= render 'contact_owner_form' %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id= "pay">
+         Contact Owner
+        </button>
       </div>
       <div class="col-xs-12 col-sm-6">
           <%= render 'bookings/form' %>
       </div>
     </div>
   <% end %>
+
+  <div class="review-text">
+    <div class="row">
+    <h3 text-center> Reviews </h3>
+      <div class="col-xs-4 col-sm-2 col-xl-1">
+        <% if @yacht.reviews.present? %>
+          <% @yacht.reviews.each do |review|%>
+            <div class="label-112"  >
+              <div><%= cl_image_tag review.booking.user.avatar.path, class: "img-circle" %></div>
+              <div><%= review.description %></div>
+              <div><%= time_ago_in_words(review.created_at) %></div>
+            </div>
+          <% end %> 
+        <% end %>
+      </div>
+    </div>
+  </div>  
 
   <div class="col-xs-12 col-sm-10 col-md-offset-1">
     <div id="map" style="width: 100%; height: 600px;"></div>
