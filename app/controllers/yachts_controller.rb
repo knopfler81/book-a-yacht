@@ -3,6 +3,7 @@ class YachtsController < ApplicationController
     @yachts = Yacht.all
     # @yachts = Yacht.near(params[:query][:location], 30).where('capacity >= ?', params[:query][:guests])
     filter_yatchs
+    @params = params[:query]
 
     # remplacer par le résultat de la recherche, on doit pouvoir filtrer avec les dates aussi
     @hash = Gmaps4rails.build_markers(@yachts) do |yacht, marker|

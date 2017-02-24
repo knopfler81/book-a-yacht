@@ -1,6 +1,20 @@
 <%= simple_form_for [@yacht, @booking] do |f| %>
-  <%= f.input :start_date,  input_html: { type: "date"} %>
-  <%= f.input :end_date,  input_html: { type: "date"} %>
-  <%= f.input :guests, collection: 1..10, prompt: "How many guests ?" %>
+ <%= f.input :start_date, as: :string, placeholder: "Start date", input_html: {class: 'datepicker', value: params[:query][:start_date]} %>
+  <%= f.input :end_date, as: :string, placeholder: "End date", input_html: {class: 'datepicker', value: params[:query][:end_date]} %>
+  <%= f.input(
+    :guests,
+    collection: guest_collection,
+    prompt: "Guests",
+    selected: params[:query][:guests]
+  )
+  %>
   <%= f.submit  %>
+<% end %>
+
+<% content_for(:after_js) do %>
+ <%= javascript_tag do %>
+    $(document).ready(function(){
+      $('.datepicker').datepicker();
+    });
+ <% end %>
 <% end %>

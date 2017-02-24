@@ -21,9 +21,11 @@
     <div class="col-xs-12 col-sm-6">
       <h3> Your booking details</h3>
       <hr>
-      <h4>Start Date : <strong><%= @booking.start_date %></strong>  - End Date :  <strong><%= @booking.start_date %></strong></h4>
+      <h4>Start Date : <strong><%= @booking.start_date %></strong>  - End Date :  <strong><%= @booking.end_date %></strong></h4>
 
       <h4> You've booked for <strong><%= @booking.guests %> guests</strong></h4>
+      <h4> Total price: <strong>$<%= @booking.total_price %></strong></h4>
+
 
       <%= render'modal' %>
 
