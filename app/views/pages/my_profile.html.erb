@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h3><%= current_user.first_name %></h3>
-      <h3><%= current_user.last_name %></h3>
+      <h3><%= current_user.first_name %> <%= current_user.last_name %></h3>
       <%= cl_image_tag current_user.avatar.path, :transformation=>[
         {:width=>400, :height=>400, :gravity=>"face", :radius=>"max", :crop=>"crop"},
         {:width=>100, :crop=>"scale"}
@@ -37,24 +36,32 @@
   <div class="container text-center">
     <div class="tab-content" id="mybookings">
       <div class="container">
-          <div class="row">
-            <% current_user.customer_bookings.each do |booking| %>
-              <div class="col-xs-12 col-md-4">
-                <%= render 'shared/booking_card', booking: booking %>
-              </div>
-            <% end %>
-          </div>
+          <% if current_user.customer_bookings.count > 0 %>
+            <div class="row">
+              <% current_user.customer_bookings.each do |booking| %>
+                <div class="col-xs-12 col-md-4">
+                  <%= render 'shared/booking_card', booking: booking %>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <button type="submit" class="btn btn-default"><%= link_to 'Make a research', root_path %></button>
+          <% end %>
         </div>
     </div>
     <div class="tab-content hidden" id="myyachts">
       <div class="container" id="my_yachts">
-          <div class="row">
-            <% current_user.yachts.each do |yacht| %>
-              <div class="col-xs-12 col-md-4">
-                <%= render 'shared/yacht_card', yacht: yacht %>
-              </div>
-            <% end %>
-          </div>
+          <% if current_user.yachts.count > 0 %>
+            <div class="row">
+              <% current_user.yachts.each do |yacht| %>
+                <div class="col-xs-12 col-md-4">
+                  <%= render 'shared/yacht_card', yacht: yacht %>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <button type="submit" class="btn btn-default"><%= link_to 'Add your yacht', new_yacht_path %></button>
+          <% end %>
         </div>
     </div>
     <div class="tab-content hidden" id="myreservations">
